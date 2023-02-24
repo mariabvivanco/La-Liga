@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Page404 from '../pages/Page404';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 
 import { routes } from './routes';
 import { PrivateRoute, PublicRoute } from './typesRoutes';
@@ -33,7 +33,8 @@ export const RoutesApp = () => {
             }
           />
         ))}
-        <Route path="*" element={<Page404 />} />
+                <Route path="*" element={<Navigate to="/clubs" replace />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -16,7 +16,7 @@ export const routes = {
       Component: ClubsPage,
     },
     {
-      path: '/club/[id]',
+      path: '/club/:clubID',
       name: 'club',
       Component: ClubPage,
     },

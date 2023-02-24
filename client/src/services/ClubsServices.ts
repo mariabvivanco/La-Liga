@@ -2,11 +2,15 @@
 
 import ligaAxios from '../api';
 
-export const getClubs = async (
-  offset: number = 0,
-  limit: number = 6,
-  favorite: boolean = true,
-  name_likes: string = ''
+export interface IParamsClubs {
+  offset: number,
+  limit: number,
+  favorite: boolean,
+  name_likes: string,
+}
+
+export const getClubs = async (params: IParamsClubs
+ 
 ) => {
   const response = await ligaAxios({
     method: 'get',
@@ -15,12 +19,7 @@ export const getClubs = async (
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     },
-    params: {
-      offset,
-      limit,
-      favorite,
-      name_likes,
-    },
+    params,
   });
   return response.data;
 };
