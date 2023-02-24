@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "La Liga",
+  "name": "Prueba técnica La Liga",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "liga.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://www.bing.com/ck/a?!&&p=14ed2ac043dd20e1JmltdHM9MTY3NzE5NjgwMCZpZ3VpZD0zYTE4MzgyOC05MzgyLTZhYmUtMDQ0Ny0yOGRhOTJlOTZiNDUmaW5zaWQ9NTU4NQ&ptn=3&hsh=3&fclid=3a183828-9382-6abe-0447-28da92e96b45&u=a1L2ltYWdlcy9zZWFyY2g_cT1Mb2dvJTIwTGElMjBMaWdhJkZPUk09SVFGUkJBJmlkPTY2Njc1RjM3RjFBNTU4NDkxMjZGMUIxQTA5Qzk5RTEwN0Q5NTQ1QTQ&ntb=1",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "https://www.bing.com/ck/a?!&&p=14ed2ac043dd20e1JmltdHM9MTY3NzE5NjgwMCZpZ3VpZD0zYTE4MzgyOC05MzgyLTZhYmUtMDQ0Ny0yOGRhOTJlOTZiNDUmaW5zaWQ9NTU4NQ&ptn=3&hsh=3&fclid=3a183828-9382-6abe-0447-28da92e96b45&u=a1L2ltYWdlcy9zZWFyY2g_cT1Mb2dvJTIwTGElMjBMaWdhJkZPUk09SVFGUkJBJmlkPTY2Njc1RjM3RjFBNTU4NDkxMjZGMUIxQTA5Qzk5RTEwN0Q5NTQ1QTQ&ntb=1",
       "type": "image/png",
       "sizes": "512x512"
     }
