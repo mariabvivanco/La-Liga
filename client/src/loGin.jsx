@@ -9,7 +9,7 @@ export class LogiN extends Component {
       password: null,
     };
   }
-  componentWillReceiveProps(nextProps, nextState) {}
+  //componentWillReceiveProps(nextProps, nextState) {}
   render() {
     console.log('state', this.state);
     return (
