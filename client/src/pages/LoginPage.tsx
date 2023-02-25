@@ -1,87 +1,54 @@
-import React, { useState } from 'react';
+import { Center, Text, Grid, Image, GridItem } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-
-import { loginRequest, token } from '../store/auth/authSlicer';
+import LoginComp from '../components/login/LoginComp';
+import ModalError from '../components/modals/ModalError';
+import { loginRequest, status } from '../store/auth/authSlicer';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state);
-  const tokenUser = useSelector(token);
+
+  const statusLogin = useSelector(status);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [change, setChange] = useState(false);
+
+  const onSubmit = () => {
+    dispatch(loginRequest({ email, password }));
+  };
+
+  useEffect(() => {
+    if (password !== '' && email !== '') onSubmit();
+  }, [change]);
+
+  useEffect(() => {
+    if (statusLogin==='error'&&!showModal) setShowModal(true);
+  }, [statusLogin]);
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        padding: '30px',
-        backgroundColor: '#e4e4e4',
-      }}
-    >
-      <div>
-        <u>
-          <strong>
-            <span
-              style={{
-                fontWeight: 'bolder',
-              }}
-            >
-              LOGIN
-            </span>
-          </strong>
-        </u>
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(loginRequest({ email, password }));
-        }}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          flexDirection: 'column',
-          padding: '30px',
-          backgroundColor: '#e4e4e4',
-          rowGap: '15px',
-        }}
-      >
-        <span>Email</span>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+    <Center bg="#F0F6F5" h="100vh" color="#319795">
+      <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)'}} >
+        <GridItem> 
+          <Center>
+          <Image
+          boxSize='100px'
+          src='/public/assets/images/liga'          
         />
-        <span>Password</span>
-        <input
-          type="text"
-          name="email"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          type="submit"
-          style={{
-            padding: '5px',
-            border: '1px solid black',
-            width: '80px',
-          }}
-        />
-      </form>
-
-      <div>Token: {tokenUser}</div>
-    </div>
+        </Center>
+        <Text fontSize={{ base: '24px', md: '40px', lg: '56px' }} m="10">Bienvenido a La Liga</Text></GridItem>
+        <GridItem> 
+          <LoginComp setEmailLogin={setEmail} setPasswordLogin={setPassword} isLoading={statusLogin==='pending'} setChange={setChange} change={change}/>
+        </GridItem>
+     
+      
+       </Grid>
+       <ModalError 
+          title="Lo sentimos" 
+          text="Sus  credenciales son incorrectas, por favor revise las mismas"
+          show ={showModal}
+          setShow = {setShowModal}/>
+    </Center>
   );
 };
 

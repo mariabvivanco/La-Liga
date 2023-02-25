@@ -6,7 +6,7 @@ import { RootState } from '..';
 interface IAuthState {
   token: string;
   error: string;
-  status: 'pending' | 'loading' | 'idle' | 'success';
+  status: 'pending' | 'error' | 'idle' | 'success';
   email: string;
   password: string;
 }
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
     },
     loginFailed: (state, action) => {
       state.error = action.payload;
-      state.status = 'idle';
+      state.status = 'error';
       state.token = '';
     },
     logout: (state) => {
@@ -48,6 +48,7 @@ export const authSlice = createSlice({
 
 export const token = (state: RootState) => state.reducer.auth.token;
 export const email = (state: RootState) => state.reducer.auth.email;
+export const status = (state: RootState) => state.reducer.auth.status;
 export const password = (state: RootState) => state.reducer.auth.password;
 
 export const { loginSuccess, loginFailed, logout, loginRequest } =
