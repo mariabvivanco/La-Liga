@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clubs, limit, setOffset } from '../../store/clubs/clubsSlicer';
 import {
@@ -22,16 +22,23 @@ const Paginator = () => {
 
   const handleChange = (value) => {
     setValue(value);
-    dispatch(setOffset(value));
+    dispatch(setOffset(value-1));
   };
 
   const [min, setMin] = useState(clubsLiga.total > 0 ? 1 : 0);
-  const [max, setMax] = useState(
-    clubsLiga.total % limitClub === 0
-      ? Math.floor(clubsLiga.total / limitClub)
-      : Math.floor(clubsLiga.total / limitClub + 1),
-  );
+  const [max, setMax] = useState(clubsLiga.total % limitClub === 0
+    ? Math.floor(clubsLiga.total / limitClub)
+    : Math.floor(clubsLiga.total / limitClub + 1) );
   const [value, setValue] = useState(clubsLiga.total > 0 ? 1 : 0);
+
+  useEffect(() => {
+    setMin(clubsLiga.total > 0 ? 1 : 0)
+    setMax(clubsLiga.total % limitClub === 0
+      ? Math.floor(clubsLiga.total / limitClub)
+      : Math.floor(clubsLiga.total / limitClub + 1))
+  
+  }, [limitClub, clubsLiga])
+  
 
   return (
     <Flex>

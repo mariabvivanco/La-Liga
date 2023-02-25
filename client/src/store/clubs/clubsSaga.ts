@@ -20,9 +20,14 @@ export function* getClubs() {
         (state) => state.reducer.clubs.offset
       );
 
+      const name_like: string = yield select(
+        (state) => state.reducer.clubs.name_like
+      );
+
       const result: string = yield getClubsAxios(token,{
         offset,
-        limit
+        limit,
+        name_like
       });
       yield put(clubsSuccess(result));
      

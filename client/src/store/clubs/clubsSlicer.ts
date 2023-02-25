@@ -48,6 +48,7 @@ export const clubsSlice = createSlice({
       },
       setSearch: (state, action) => {
         state.name_like = action.payload;
+        state.offset = 0;
       },
 
     

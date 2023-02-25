@@ -6,7 +6,7 @@ export interface IParamsClubs {
   offset: number,
   limit: number,
   favorite?: boolean,
-  name_likes?: string,
+  name_like?: string,
 }
 
 export const getClubsAxios = async ( token: string, params?: IParamsClubs,
