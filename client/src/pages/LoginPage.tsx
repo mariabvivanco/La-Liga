@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginComp from '../components/login/LoginComp';
 import ModalError from '../components/modals/ModalError';
 import { loginRequest, status } from '../store/auth/authSlicer';
+import Logo from '../components/icons/Logo.png'
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const LoginPage = () => {
           <Center>
           <Image
           boxSize='100px'
-          src='/public/assets/images/liga'          
+          src={Logo}        
         />
         </Center>
         <Text fontSize={{ base: '24px', md: '40px', lg: '56px' }} m="10">Bienvenido a La Liga</Text></GridItem>

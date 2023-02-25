@@ -54,6 +54,7 @@ export const clubsSlice = createSlice({
   },
 });
 
+export const clubs = (state: RootState) => state.reducer.clubs.clubs;
 export const limit = (state: RootState) => state.reducer.clubs.limit;
 export const favorite = (state: RootState) => state.reducer.clubs.favorite;
 export const offset = (state: RootState) => state.reducer.clubs.offset;

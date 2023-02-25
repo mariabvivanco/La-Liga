@@ -25,7 +25,7 @@ const ModalError: React.FC<ModalErrorProps>  = ({setShow, show, title, text, ima
         <Modal onClose={setShow} size='xs' isOpen={show}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{title}</ModalHeader>
+          <ModalHeader  color="red" >{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Image src={imag}></Image>
