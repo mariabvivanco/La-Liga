@@ -22,7 +22,7 @@ export function* login() {
   }
 }
 export default function* loginSaga() {
-  console.log('me ejecuto take every');
+  
   yield takeEvery(loginRequest.type, login);
 }
 

@@ -4,7 +4,7 @@ import ligaAxios from '../api';
 import { ILogin } from '../types/IAuth';
 
 export const postLogin = async (dataLogin: ILogin) => {
-  console.log('me llamaron con ', dataLogin);
+
 
   const response = await ligaAxios({
     method: 'post',
@@ -16,6 +16,6 @@ export const postLogin = async (dataLogin: ILogin) => {
     data: dataLogin,
   });
 
-  console.log('respondi ', response);
+
   return response.data.token;
 };

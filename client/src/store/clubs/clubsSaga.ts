@@ -7,7 +7,7 @@ import { getClubsAxios } from '../../services/ClubsServices';
 export function* getClubs() {
   try {
     
-    console.log('llegue a la saga')
+
     const token: string = yield select(
       (state) => state.reducer.auth.token
     );
@@ -36,7 +36,7 @@ export function* getClubs() {
   }
 }
 export default function* clubsSaga() {
-  console.log('me ejecuto take every en clubs');
+ 
   yield takeEvery(setFavorite.type, getClubs);
   yield takeEvery(setOffset.type, getClubs);
   yield takeEvery(setSearch.type, getClubs);

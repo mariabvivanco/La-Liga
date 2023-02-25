@@ -3,16 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clubsRequest } from '../store/clubs/clubsSlicer';
 import { clubs } from '../store/clubs/clubsSlicer';
 
-import {
-
-  Box,
-  Center,
-  Grid,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Center, Grid, Text } from '@chakra-ui/react';
 
 import Header from '../components/header/Header';
 import TableClub from '../components/clubs/TableClub';
+import Paginator from '../components/clubs/Paginator';
 
 const ClubsPage = () => {
   const clubsLiga = useSelector(clubs);
@@ -23,13 +18,12 @@ const ClubsPage = () => {
   };
 
   useEffect(() => {
-    console.log('mando a llamara  aloadClubs');
     loadClubs();
   }, []);
 
   return (
     <Box bg="#F0F6F5" minHeight="100vh" color="#319795">
-      <Header/>
+      <Header />
       <Center>
         <Grid templateColumns={{ base: 'repeat(1, 1fr)' }}>
           <Center>
@@ -37,7 +31,8 @@ const ClubsPage = () => {
               Clubs de La Liga
             </Text>
           </Center>
-          <TableClub clubsLiga={clubsLiga}/>
+          <TableClub clubsLiga={clubsLiga} />
+          <Paginator />
         </Grid>
       </Center>
     </Box>
