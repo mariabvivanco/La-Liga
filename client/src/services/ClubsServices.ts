@@ -5,11 +5,11 @@ import ligaAxios from '../api';
 export interface IParamsClubs {
   offset: number,
   limit: number,
-  favorite: boolean,
-  name_likes: string,
+  favorite?: boolean,
+  name_likes?: string,
 }
 
-export const getClubs = async (params: IParamsClubs
+export const getClubsAxios = async ( token: string, params?: IParamsClubs,
  
 ) => {
   const response = await ligaAxios({
@@ -18,13 +18,14 @@ export const getClubs = async (params: IParamsClubs
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
+      'Authorization':  "Bearer "+token
     },
     params,
   });
   return response.data;
 };
 
-export const getClub = async (club: string) => {
+export const getClubAxios = async (club: string) => {
   const response = await ligaAxios({
     method: 'get',
     url: 'api/clubs/' + club,
