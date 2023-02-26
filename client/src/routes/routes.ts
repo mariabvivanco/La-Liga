@@ -1,3 +1,5 @@
+//Aquí se agregan cada una de las rutas de la aplicación y su componente asociado ya sea estatica o privada
+
 import ClubsPage from '../pages/ClubsPage';
 import ClubPage from '../pages/ClubPage';
 import LoginPage from '../pages/LoginPage';

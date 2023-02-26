@@ -1,10 +1,8 @@
 import React from 'react';
 
 import {
-  Card,
-  
+  Card,  
   CardBody,
-  Text,
   Image,
   Stack,
   Heading,
@@ -18,9 +16,7 @@ interface Props {
 }
 
 const ItemPlayer: React.FC<Props> = ({ player }) => {
-  const isMobile = screen.width < 760;
-
-  return (
+    return (
     <Card maxW="sm">
       <CardBody>
         <Image

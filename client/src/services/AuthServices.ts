@@ -5,7 +5,6 @@ import { ILogin } from '../types/IAuth';
 
 export const postLogin = async (dataLogin: ILogin) => {
 
-
   const response = await ligaAxios({
     method: 'post',
     url: 'http://localhost:4000/login',

@@ -1,3 +1,5 @@
+//Saga para  la autorización
+
 import { takeEvery, put, select } from 'redux-saga/effects';
 
 import { loginSuccess, loginFailed, loginRequest } from './authSlicer';
@@ -17,8 +19,8 @@ export function* login() {
 
     yield put(loginSuccess(result));
   } catch (e) {
-    console.log('error', e);
-    yield put(loginFailed('Usuario incorrecto'));
+      console.log('error', e);
+      yield put(loginFailed('Usuario incorrecto'));
   }
 }
 export default function* loginSaga() {

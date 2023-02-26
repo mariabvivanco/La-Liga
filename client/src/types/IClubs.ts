@@ -43,10 +43,4 @@ export interface IStat {
   score: number;
 }
 
-//ojo esto tengo que quitarlo deaqui van a ser parametros
-export interface IGetClubs {
-  offset: number;
-  limit: number;
-  favorite: boolean;
-  name_like: string;
-}
+

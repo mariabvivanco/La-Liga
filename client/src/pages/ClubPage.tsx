@@ -41,7 +41,8 @@ const ClubPage = () => {
             </Text>
           </Center>
           <SimpleGrid spacing={4} m='10' templateColumns='repeat(auto-fill, minmax(300px, 1fr))'>
-            {clubLiga.players&&clubLiga.players.length>0&&clubLiga.players.map((player:IPlayer)=>{return(<ItemPlayer player={player}/>)})}
+            {clubLiga.players&&clubLiga.players.length>0&&clubLiga.players.map((player:IPlayer)=>{
+              return(<ItemPlayer key={player.id} player={player}/>)})}
           </SimpleGrid>
         </div>
       )}

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-plusplus */
 // Funciones auxiliares de diferentes módulos
 
 import { useState, useEffect } from 'react';

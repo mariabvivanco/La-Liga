@@ -1,3 +1,5 @@
+//Realiza el tratamiento a la ruta de acuerdo al  comportamiento que se espera de una ruta pública o privada
+
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 

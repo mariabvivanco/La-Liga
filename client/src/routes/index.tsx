@@ -1,7 +1,8 @@
+//Componente que establece el enrutado de la aplicación basandose en las rutas definidas en routes.
+
 import React from 'react';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
 
 import { routes } from './routes';
 import { PrivateRoute, PublicRoute } from './typesRoutes';
@@ -33,8 +34,7 @@ export const RoutesApp = () => {
             }
           />
         ))}
-                <Route path="*" element={<Navigate to="/clubs" replace />} />
-
+        <Route path="*" element={<Navigate to="/clubs" replace />} />
       </Routes>
     </BrowserRouter>
   );

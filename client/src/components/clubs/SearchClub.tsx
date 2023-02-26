@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { Stack, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import { useDebounce } from '../../hooks/utils';
-import { search, setSearch } from '../../store/clubs/clubsSlicer';
+import {  setSearch } from '../../store/clubs/clubsSlicer';
 
 const SearchClub = () => {
   const [tempSearch, setTempSearch] = useState('');
-  const searchClub = useSelector(search);
   const dispatch = useDispatch();
-
   const debouncedSearch = useDebounce(500, tempSearch);
 
   useEffect(() => {

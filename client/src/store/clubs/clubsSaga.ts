@@ -1,15 +1,11 @@
+//Saga para los clubs de la liga
 import { takeEvery, put, select } from 'redux-saga/effects';
-
 import { setFavorite, setOffset, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs} from './clubsSlicer';
-
 import { getClubsAxios } from '../../services/ClubsServices';
-
-
 
 export function* getClubs() {
  let  temp
-  try {
-    
+  try {   
 
     const token: string = yield select(
       (state) => state.reducer.auth.token
@@ -29,9 +25,7 @@ export function* getClubs() {
 
       const favorite: boolean = yield select(
         (state) => state.reducer.clubs.favorite
-      );
-
-      
+      );     
 
 
       const result: string = yield getClubsAxios(token,{
@@ -41,8 +35,7 @@ export function* getClubs() {
         favorite:favorite?favorite:temp
         
       });
-      yield put(clubsSuccess(result));
-     
+      yield put(clubsSuccess(result));    
 
     }
 

@@ -1,6 +1,6 @@
+//Crea elSlicer de los detalles de un club
+
 import { createSlice} from '@reduxjs/toolkit';
-
-
 import { RootState } from '..';
 import { IClubDet } from '../../types/IClubs';
 
@@ -18,8 +18,6 @@ const initialState: IClubState = {
     
 };
 
-
-
 export const clubdetSlice = createSlice({
   name: 'clubdet',
   initialState,
@@ -31,8 +29,7 @@ export const clubdetSlice = createSlice({
     clubdetRequest: (state, action) => {
       state.id=action.payload
         state.status = 'pending'
-        console.log(state.id)
-    },
+     },
     clubdetSuccess: (state, action) => {
         state.club = action.payload;
         state.status = 'idle'
@@ -47,9 +44,7 @@ export const clubdetSlice = createSlice({
 });
 
 export const club = (state: RootState) => state.reducer.clubdet.club;
-
 export const id = (state: RootState) => state.reducer.clubdet.id;
+export const { deleteClub, clubdetRequest, clubdetSuccess, clubdetError } =   clubdetSlice.actions;
 
-export const { deleteClub, clubdetRequest, clubdetSuccess, clubdetError } =
-  clubdetSlice.actions;
 export default clubdetSlice.reducer;

@@ -1,6 +1,6 @@
+//Slicer para los detalles de un club
+
 import { createSlice} from '@reduxjs/toolkit';
-
-
 import { RootState } from '..';
 import { IClubs } from '../../types/IClubs';
 
