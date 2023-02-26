@@ -18,3 +18,14 @@ export const useDebounce = ( delay:number, value?:string) => {
   return debouncedValue;
 };
 
+export const getDate = ( dateClub:Date) => {
+  const date = new Date(dateClub);
+  const temp= date.getDate() +
+    '/' +
+    date.getMonth() +
+    '/' +
+    date.getFullYear()
+  return temp
+};
+
+

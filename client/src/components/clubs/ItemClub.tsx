@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+
 
 import {
   Tr,
@@ -15,8 +17,9 @@ import {
 import { IClub } from '../../types/IClubs';
 import { updateFavorite } from '../../services/ClubsServices';
 import { token } from '../../store/auth/authSlicer';
-import { updateClubs } from '../../store/clubs/clubsSlicer';
+import { clubdetRequest } from '../../store/clubdet/clubdetSlicer';
 import imagFavorite from '../../components/icons/Favorite.png';
+import { getDate } from '../../hooks/utils';
 
 interface Props {
   club: IClub;
@@ -24,9 +27,10 @@ interface Props {
 
 const ItemClub: React.FC<Props> = ({ club }) => {
   const isMobile = screen.width < 760;
+  const navigate = useNavigate();
   const tokenAuth = useSelector(token);
   const dispatch = useDispatch();
-  const date = new Date(club.foundationDate);
+  
 
   const [fav, setFav] = useState(club.favorite);
 
@@ -39,10 +43,16 @@ const ItemClub: React.FC<Props> = ({ club }) => {
       console.log('Ocurrió un error al intentar cambiar favorito');
     }
   };
+
+  const goClub =()=> {
+    dispatch(clubdetRequest(club.id))
+    navigate('/club/'+club.id)
+  }
+
   return (
     <Tr borderColor="blue" borderStyle="2px solid">
-      <Td>
-        <Avatar src={club.avatar} />
+      <Td onClick={()=>{goClub()}}>
+        <Avatar src={club.avatar}  />
       </Td>
       <Td>
         <HStack>
@@ -54,11 +64,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
             <Box>
               {
                 <Center>
-                  {date.getDate() +
-                    '/' +
-                    date.getMonth() +
-                    '/' +
-                    date.getFullYear()}
+                  {getDate(club.foundationDate)}
                 </Center>
               }
             </Box>
@@ -80,7 +86,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
       {!isMobile && (
         <Td>
           <Center>
-            {date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}
+            {getDate(club.foundationDate)}
           </Center>
         </Td>
       )}

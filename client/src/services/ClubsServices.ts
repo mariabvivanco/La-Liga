@@ -25,13 +25,14 @@ export const getClubsAxios = async ( token: string, params?: IParamsClubs,
   return response.data;
 };
 
-export const getClubAxios = async (club: string) => {
+export const getClubAxios = async (token: string,club: string) => {
   const response = await ligaAxios({
     method: 'get',
     url: 'api/clubs/' + club,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
+      'Authorization':  "Bearer "+token
     },
   });
   return response.data;
