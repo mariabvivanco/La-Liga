@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Tr,
@@ -12,6 +13,9 @@ import {
 } from '@chakra-ui/react';
 
 import { IClub } from '../../types/IClubs';
+import { updateFavorite } from '../../services/ClubsServices';
+import { token } from '../../store/auth/authSlicer';
+import { updateClubs } from '../../store/clubs/clubsSlicer';
 import imagFavorite from '../../components/icons/Favorite.png';
 
 interface Props {
@@ -20,9 +24,21 @@ interface Props {
 
 const ItemClub: React.FC<Props> = ({ club }) => {
   const isMobile = screen.width < 760;
-
+  const tokenAuth = useSelector(token);
+  const dispatch = useDispatch();
   const date = new Date(club.foundationDate);
-  const [clubFavorite, setClubFavorite] = useState(club.favorite);
+
+  const [fav, setFav] = useState(club.favorite);
+
+  const changeFavorite = async () => {
+    try {
+      const response = await updateFavorite(club.id, !club.favorite, tokenAuth);
+
+      if (response.id) setFav(response.favorite);
+    } catch (error) {
+      console.log('Ocurrió un error al intentar cambiar favorito');
+    }
+  };
   return (
     <Tr borderColor="blue" borderStyle="2px solid">
       <Td>
@@ -30,9 +46,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
       </Td>
       <Td>
         <HStack>
-          <Box>
-            {clubFavorite && <Image src={imagFavorite} boxSize="10px"></Image>}
-          </Box>
+          <Box>{fav && <Image src={imagFavorite} boxSize="10px"></Image>}</Box>
           <Box>{club.name}</Box>
         </HStack>
         {isMobile && (
@@ -53,9 +67,9 @@ const ItemClub: React.FC<Props> = ({ club }) => {
               <Switch
                 id="isChecked"
                 colorScheme="teal"
-                isChecked={clubFavorite}
+                isChecked={fav}
                 onChange={() => {
-                  setClubFavorite(!clubFavorite);
+                  changeFavorite();
                 }}
               />
             </Box>
@@ -76,9 +90,9 @@ const ItemClub: React.FC<Props> = ({ club }) => {
           <Switch
             id="isChecked"
             colorScheme="teal"
-            isChecked={clubFavorite}
+            isChecked={fav}
             onChange={() => {
-              setClubFavorite(!clubFavorite);
+              changeFavorite();
             }}
           />
         </Td>

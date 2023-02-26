@@ -49,15 +49,16 @@ export const deleteClub = async (club: string) => {
   return response.data;
 };
 
-export const updateFavorite = async (club: string, favorite: boolean) => {
+export const updateFavorite = async (club: string, favorite: boolean, token:string) => {
   const response = await ligaAxios({
     method: 'patch',
     url: 'api/clubs/' + club,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
+      'Authorization':  "Bearer "+token
     },
-    data: favorite,
+    data: {favorite:favorite},
   });
 
   return response.data;

@@ -8,7 +8,7 @@ interface IClubsState {
   clubs: IClubs;
   offset: number;
   limit:number;
-  favorite?:boolean;
+  favorite:boolean;
   error: string;
   name_like?: string;
   status: 'pending' | 'loading' | 'idle' | 'success'; 
@@ -19,18 +19,24 @@ const initialState: IClubsState = {
     offset: 0,
     limit:6,
     error: '',
-    status: 'idle'  
+    status: 'idle',
+    favorite:false  
 };
 
 export const clubsSlice = createSlice({
   name: 'clubs',
   initialState,
   reducers: {
+    updateClubs:(state) => {
+      state.status = 'idle',
+      state.clubs.results = [...state.clubs.results];
+  },
     clubsRequest: (state) => {
         state.status = 'pending'
     },
     clubsSuccess: (state, action) => {
         state.clubs = action.payload;
+        state.clubs.results = [...state.clubs.results];
         state.status = 'idle'
     },
     clubsError: (state, action) => {
@@ -39,16 +45,22 @@ export const clubsSlice = createSlice({
     },
     setOffset: (state, action) => {
       state.offset = action.payload;
+      state.clubs.results = [...state.clubs.results];
     },
     setLimit: (state, action) => {
         state.limit = action.payload;
       },
-    setFavorite: (state, action) => {
-        state.favorite = action.payload;
+    setFavorite: (state) => {
+        state.favorite = !state.favorite;
+        state.clubs.results = [...state.clubs.results];
+        state.name_like = '';
+        state.offset = 0;
       },
       setSearch: (state, action) => {
         state.name_like = action.payload;
+        state.clubs.results = [...state.clubs.results];
         state.offset = 0;
+        
       },
 
     
@@ -62,6 +74,6 @@ export const offset = (state: RootState) => state.reducer.clubs.offset;
 export const search = (state: RootState) => state.reducer.clubs.name_like;
 
 
-export const { setFavorite, setOffset, setLimit, setSearch, clubsSuccess, clubsError, clubsRequest } =
+export const { setFavorite, setOffset, setLimit, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs } =
   clubsSlice.actions;
 export default clubsSlice.reducer;

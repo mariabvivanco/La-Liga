@@ -1,10 +1,13 @@
 import { takeEvery, put, select } from 'redux-saga/effects';
 
-import { setFavorite, setOffset, setSearch, clubsSuccess, clubsError, clubsRequest } from './clubsSlicer';
+import { setFavorite, setOffset, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs} from './clubsSlicer';
 
 import { getClubsAxios } from '../../services/ClubsServices';
 
+
+
 export function* getClubs() {
+ let  temp
   try {
     
 
@@ -24,10 +27,19 @@ export function* getClubs() {
         (state) => state.reducer.clubs.name_like
       );
 
+      const favorite: boolean = yield select(
+        (state) => state.reducer.clubs.favorite
+      );
+
+      
+
+
       const result: string = yield getClubsAxios(token,{
         offset,
         limit,
-        name_like
+        name_like,
+        favorite:favorite?favorite:temp
+        
       });
       yield put(clubsSuccess(result));
      
@@ -46,6 +58,8 @@ export default function* clubsSaga() {
   yield takeEvery(setOffset.type, getClubs);
   yield takeEvery(setSearch.type, getClubs);
   yield takeEvery(clubsRequest.type, getClubs);
+  yield takeEvery(updateClubs.type, getClubs);
+
 }
 
 export {};
