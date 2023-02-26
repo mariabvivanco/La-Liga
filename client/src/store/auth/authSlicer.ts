@@ -42,6 +42,8 @@ export const authSlice = createSlice({
     logout: (state) => {
       state.status = 'idle';
       state.token = '';
+      state.email= '';
+      state.password= '';
     },
   },
 });

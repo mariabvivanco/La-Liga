@@ -24,7 +24,7 @@ const ClubsPage = () => {
   }, []);
 
   return (
-    <Box bg="#F0F6F5" minHeight="100vh" color="#319795">
+    <Box bg="#F0F6F5" minHeight="100vh" color="#319795" pb="10">
       <Header />
       <Center>
         <Grid templateColumns={{ base: 'repeat(1, 1fr)' }}>

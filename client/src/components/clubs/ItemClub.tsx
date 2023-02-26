@@ -51,8 +51,8 @@ const ItemClub: React.FC<Props> = ({ club }) => {
 
   return (
     <Tr borderColor="blue" borderStyle="2px solid">
-      <Td onClick={()=>{goClub()}}>
-        <Avatar src={club.avatar}  />
+      <Td onClick={()=>{goClub()}} >
+        <Avatar src={club.avatar} cursor='pointer' />
       </Td>
       <Td>
         <HStack>

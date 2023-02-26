@@ -27,6 +27,9 @@ export const clubsSlice = createSlice({
   name: 'clubs',
   initialState,
   reducers: {
+    initClubs:(state) => {
+      state=initialState;
+  },
     updateClubs:(state) => {
       state.status = 'idle',
       state.clubs.results = [...state.clubs.results];
@@ -74,6 +77,6 @@ export const offset = (state: RootState) => state.reducer.clubs.offset;
 export const search = (state: RootState) => state.reducer.clubs.name_like;
 
 
-export const { setFavorite, setOffset, setLimit, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs } =
+export const { setFavorite, setOffset, setLimit, setSearch, initClubs, clubsSuccess, clubsError, clubsRequest, updateClubs } =
   clubsSlice.actions;
 export default clubsSlice.reducer;
