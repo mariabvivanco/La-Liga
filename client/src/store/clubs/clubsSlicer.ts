@@ -28,7 +28,9 @@ export const clubsSlice = createSlice({
   initialState,
   reducers: {
     initClubs:(state) => {
-      state=initialState;
+      state.favorite=false;
+      state.offset=0;
+      state.clubs={results:[], total:0}
   },
     updateClubs:(state) => {
       state.status = 'idle',
@@ -56,7 +58,6 @@ export const clubsSlice = createSlice({
     setFavorite: (state) => {
         state.favorite = !state.favorite;
         state.clubs.results = [...state.clubs.results];
-        state.name_like = '';
         state.offset = 0;
       },
       setSearch: (state, action) => {

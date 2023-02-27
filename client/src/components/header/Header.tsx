@@ -27,11 +27,12 @@ const Header = () => {
       </Link>
       <Image
         boxSize="40px"
+        mr='60px'
         src={Close}
         cursor="pointer"
         onClick={() => {
-          dispatch(logout());
           dispatch(initClubs())
+          dispatch(logout());
         }}
       />
     </Flex>

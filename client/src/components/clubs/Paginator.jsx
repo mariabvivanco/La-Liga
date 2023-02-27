@@ -36,18 +36,18 @@ const Paginator = () => {
     setMax(clubsLiga.total % limitClub === 0
       ? Math.floor(clubsLiga.total / limitClub)
       : Math.floor(clubsLiga.total / limitClub + 1))
+    setValue(clubsLiga.total > 0 ? 1 : 0)
   
-  }, [limitClub, clubsLiga])
+  }, [limitClub, clubsLiga.total])
   
 
   return (
     <Flex>
       <NumberInput
-        defaultValue={15}
         min={min}
         max={max}
         maxW="100px"
-        mr="2rem"
+        mr="5rem"
         value={value}
         onChange={handleChange}
       >

@@ -1,29 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { clubsRequest } from '../store/clubs/clubsSlicer';
+import React, { } from 'react';
+import { useSelector } from 'react-redux';
 import { club } from '../store/clubdet/clubdetSlicer';
 
-import { Box, Center, SimpleGrid, Text, Button } from '@chakra-ui/react';
+import { Box, Center, SimpleGrid, Text} from '@chakra-ui/react';
 
 import Header from '../components/header/Header';
 import { getDate } from '../hooks/utils';
 import ItemPlayer from '../components/clubdet/ItemPlayer';
-import { IPlayer, IClubDet } from '../types/IClubs';
+import { IPlayer} from '../types/IClubs';
 
 const ClubPage = () => {
   const clubLiga = useSelector(club);
 
-  const dispatch = useDispatch();
-
-  const loadClubs = () => {
-    dispatch(clubsRequest());
-  };
-
-  useEffect(() => {
-    loadClubs();
-  }, []);
-
-  return (
+   return (
     <Box bg="#F0F6F5" minHeight="100vh" color="#319795" pb={20}>
       <Header />
       {clubLiga && (

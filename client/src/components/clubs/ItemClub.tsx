@@ -21,6 +21,8 @@ import { clubdetRequest } from '../../store/clubdet/clubdetSlicer';
 import imagFavorite from '../../components/icons/Favorite.png';
 import { getDate } from '../../hooks/utils';
 
+import './clubs.css'
+
 interface Props {
   club: IClub;
 }
@@ -36,7 +38,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
 
   const changeFavorite = async () => {
     try {
-      const response = await updateFavorite(club.id, !club.favorite, tokenAuth);
+      const response = await updateFavorite(club.id, !fav, tokenAuth);
 
       if (response.id) setFav(response.favorite);
     } catch (error) {
@@ -50,18 +52,19 @@ const ItemClub: React.FC<Props> = ({ club }) => {
   }
 
   return (
-    <Tr borderColor="blue" borderStyle="2px solid">
-      <Td onClick={()=>{goClub()}} >
-        <Avatar src={club.avatar} cursor='pointer' />
+    
+    <Tr className='image_overlay'  >
+      <Td   >
+        <Avatar src={club.avatar} cursor='pointer' onClick={()=>{goClub()}} />
       </Td>
-      <Td>
+      <Td onClick={()=>{goClub()}}>
         <HStack>
           <Box>{fav && <Image src={imagFavorite} boxSize="10px"></Image>}</Box>
           <Box>{club.name}</Box>
         </HStack>
         {isMobile && (
           <HStack>
-            <Box>
+            <Box onClick={()=>{goClub()}}>
               {
                 <Center>
                   {getDate(club.foundationDate)}
@@ -85,7 +88,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
 
       {!isMobile && (
         <Td>
-          <Center>
+          <Center onClick={()=>{goClub()}}>
             {getDate(club.foundationDate)}
           </Center>
         </Td>

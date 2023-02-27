@@ -10,7 +10,7 @@ interface IAuthState {
   password: string;
 }
 
-const initialState: IAuthState = {
+export const initialState: IAuthState = {
   token: '',
   error: '',
   status: 'idle',
@@ -53,4 +53,4 @@ export const status = (state: RootState) => state.reducer.auth.status;
 export const password = (state: RootState) => state.reducer.auth.password;
 export const { loginSuccess, loginFailed, logout, loginRequest } =  authSlice.actions;
 
-export default authSlice.reducer;
+export default authSlice.reducer?authSlice.reducer:'';

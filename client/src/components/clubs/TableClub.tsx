@@ -19,7 +19,7 @@ interface Props {
 
 const TableClub: React.FC<Props> = ({ clubsLiga }) => {
   return (
-    <TableContainer>
+    <TableContainer className='table'>
       <Table variant="simple">
         <TableCaption>
           Mostrados {clubsLiga.results.length} clubs de {clubsLiga.total}

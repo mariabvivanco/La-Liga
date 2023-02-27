@@ -50,7 +50,7 @@ const LoginComp: React.FC<LoginProps> = ({
   return (
     <Box>
       <FormControl isInvalid={isErrorEmail} mt={10}>
-        <FormLabel>Usuario (correo electrónico)</FormLabel>
+        <FormLabel>Usuario correo electrónico</FormLabel>
         <Input type="email" value={email} onChange={handleEmailChange} />
         {email === '' && !isErrorEmail ? (
           <FormHelperText>
@@ -70,12 +70,13 @@ const LoginComp: React.FC<LoginProps> = ({
           type="password"
           value={password}
           onChange={handlePasswordChange}
+          data-testid="input-password"
         />
         {password === '' && !isErrorPassword ? (
           <FormHelperText>Por favor introduzca su contraseña</FormHelperText>
         ) : (
           isErrorPassword && (
-            <FormErrorMessage>La contraseña es requerida.</FormErrorMessage>
+            <FormErrorMessage data-testid="error-password">La contraseña es requerida.</FormErrorMessage>
           )
         )}
       </FormControl>
@@ -86,6 +87,7 @@ const LoginComp: React.FC<LoginProps> = ({
         loadingText="Espere"
         colorScheme="teal"
         variant="solid"
+        data-testid="send"
         onClick={() => {
           handleSubmit();
         }}

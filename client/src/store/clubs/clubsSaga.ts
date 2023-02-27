@@ -1,6 +1,6 @@
 //Saga para los clubs de la liga
 import { takeEvery, put, select } from 'redux-saga/effects';
-import { setFavorite, setOffset, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs} from './clubsSlicer';
+import { setFavorite, setOffset, setSearch, clubsSuccess, clubsError, clubsRequest, updateClubs, initClubs} from './clubsSlicer';
 import { getClubsAxios } from '../../services/ClubsServices';
 
 export function* getClubs() {
@@ -52,7 +52,7 @@ export default function* clubsSaga() {
   yield takeEvery(setSearch.type, getClubs);
   yield takeEvery(clubsRequest.type, getClubs);
   yield takeEvery(updateClubs.type, getClubs);
-
+  yield takeEvery(initClubs.type, getClubs);
 }
 
 export {};
