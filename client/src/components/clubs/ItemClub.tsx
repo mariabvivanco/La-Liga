@@ -43,7 +43,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
 
       if (response.id) setFav(response.favorite);
     } catch (error) {
-      console.log('Ocurrió un error al intentar cambiar favorito');
+        console.error('Ocurrió un error al intentar cambiar favorito');
     }
   };
 
