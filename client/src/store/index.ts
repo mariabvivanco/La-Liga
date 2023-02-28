@@ -12,9 +12,9 @@ import clubdetSaga from './clubdet/clubdetSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    reducer: combineReducers({ auth: authReducer, clubs: clubsReducer, clubdet: clubdetReducer}),
+    reducer: combineReducers({ auth: authReducer, clubs: clubsReducer, clubdet: clubdetReducer}),   
   },
   middleware: [sagaMiddleware],
 });

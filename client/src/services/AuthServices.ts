@@ -7,7 +7,7 @@ export const postLogin = async (dataLogin: ILogin) => {
 
   const response = await ligaAxios({
     method: 'post',
-    url: 'http://localhost:4000/login',
+    url: '/login',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',

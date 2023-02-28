@@ -23,8 +23,7 @@ export function* getClub() {
 
     }
   } catch (e) {
-    console.log('error', e);
-    yield put(clubdetError('Error al obtenerel club'));
+      yield put(clubdetError('Error al obtener el club'));
   }
 }
 

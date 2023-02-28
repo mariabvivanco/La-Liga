@@ -1,3 +1,5 @@
+//Card donde se mestran los detalles elementales de un jugador
+
 import React from 'react';
 
 import {

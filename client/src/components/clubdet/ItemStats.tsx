@@ -1,3 +1,5 @@
+//Item con las estadísticas de un jugador"
+
 import React from 'react';
 
 import {

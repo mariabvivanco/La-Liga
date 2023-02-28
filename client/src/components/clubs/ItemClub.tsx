@@ -1,3 +1,4 @@
+//Componente con los detalles de un club. Es un item de la tabla
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom'

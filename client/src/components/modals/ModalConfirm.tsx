@@ -19,26 +19,31 @@ import {
     setShow: any,
     title:string,
     text:string,
-    imag?:string
+    imag?:string,
+    act:()=>void;
   }
 
-const ModalError: React.FC<ModalErrorProps>  = ({setShow, show, title, text, imag}) => {
+const ModalConfirm: React.FC<ModalErrorProps>  = ({setShow, show, title, text, imag, act}) => {
     return(
-        <Modal onClose={setShow} size='xs' isOpen={show} >
+        <Modal onClose={setShow} size='xs' isOpen={show}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader  color="red" >{title}</ModalHeader>
+          <ModalHeader  color="orange" >{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Image src={imag}></Image>
             {text}
           </ModalBody>
           <ModalFooter>
-            <Button onClick={()=>setShow(false)}>Cerrar</Button>
+            <Button onClick={()=>setShow(false)}>Cancelar</Button>
+            <Button colorScheme="teal"
+                    ml={10}
+                    variant="solid" 
+                    onClick={()=>{act(); setShow(false)}}>Confirmar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
     )
 }
 
-export default ModalError
+export default ModalConfirm

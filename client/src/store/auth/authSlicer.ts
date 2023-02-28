@@ -2,10 +2,10 @@
 
 import { createSlice} from '@reduxjs/toolkit';
 import { RootState } from '..';
-interface IAuthState {
+export interface IAuthState {
   token: string;
   error: string;
-  status: 'pending' | 'error' | 'idle' | 'success';
+  status: 'pending' | 'error' | 'not-authenticated' | 'authenticated';
   email: string;
   password: string;
 }
@@ -13,7 +13,7 @@ interface IAuthState {
 export const initialState: IAuthState = {
   token: '',
   error: '',
-  status: 'idle',
+  status: 'not-authenticated',
   email: '',
   password: '',
 };
@@ -31,26 +31,29 @@ export const authSlice = createSlice({
 
     loginSuccess: (state, action) => {
       state.token = action.payload;
-      state.status = 'success';
+      state.status = 'authenticated';
     },
     loginFailed: (state, action) => {
       state.error = action.payload;
       state.status = 'error';
       state.token = '';
+      state.email= '';
+      state.password= '';
     },
     logout: (state) => {
-      state.status = 'idle';
+      state.status = 'not-authenticated';
       state.token = '';
       state.email= '';
       state.password= '';
+      state.error=''
     },
   },
 });
 
 export const token = (state: RootState) => state.reducer.auth.token;
 export const email = (state: RootState) => state.reducer.auth.email;
-export const status = (state: RootState) => state.reducer.auth.status;
+export const status = (state: RootState) => state.reducer?.auth?.status;
 export const password = (state: RootState) => state.reducer.auth.password;
 export const { loginSuccess, loginFailed, logout, loginRequest } =  authSlice.actions;
 
-export default authSlice.reducer?authSlice.reducer:'';
+export default authSlice.reducer;

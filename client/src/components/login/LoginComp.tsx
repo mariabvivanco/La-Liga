@@ -1,3 +1,5 @@
+//Formulario del login
+
 import React, { useState } from 'react';
 import {
   Box,
@@ -58,7 +60,7 @@ const LoginComp: React.FC<LoginProps> = ({
           </FormHelperText>
         ) : (
           isErrorEmail && (
-            <FormErrorMessage>
+            <FormErrorMessage data-testid="error-email">
               El correo electrónico es requerido.
             </FormErrorMessage>
           )

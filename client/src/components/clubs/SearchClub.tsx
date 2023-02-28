@@ -1,10 +1,12 @@
+//Buscador de la página de clubs"
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { Stack, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import { useDebounce } from '../../hooks/utils';
-import {  setSearch } from '../../store/clubs/clubsSlicer';
+import { setSearch } from '../../store/clubs/clubsSlicer';
 
 const SearchClub = () => {
   const [tempSearch, setTempSearch] = useState('');

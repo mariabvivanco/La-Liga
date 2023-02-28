@@ -1,4 +1,6 @@
-import React from 'react';
+//Header que aparece en todas las vistas menos en la de login
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Image } from '@chakra-ui/react';
 
@@ -7,9 +9,17 @@ import Close from '../icons/Close.png';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/auth/authSlicer';
 import { initClubs } from '../../store/clubs/clubsSlicer';
+import ModalConfirm from '../modals/ModalConfirm';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false)
+
+  const logoutConfirm = () => {
+    dispatch(initClubs())
+    dispatch(logout());
+    console.log('supuestamente lo hice')
+  }
   return (
     <Flex
       as="nav"
@@ -31,10 +41,10 @@ const Header = () => {
         src={Close}
         cursor="pointer"
         onClick={() => {
-          dispatch(initClubs())
-          dispatch(logout());
+          setShowModal(true)
         }}
       />
+      <ModalConfirm show={showModal} setShow={setShowModal} title='Alerta' text='Está seguro que desea cerrar sesión' act={logoutConfirm}/>
     </Flex>
   );
 };

@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+//Paginador de la página de Clubs
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clubs, limit, setOffset } from '../../store/clubs/clubsSlicer';

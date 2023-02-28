@@ -19,7 +19,6 @@ export function* login() {
 
     yield put(loginSuccess(result));
   } catch (e) {
-      console.log('error', e);
       yield put(loginFailed('Usuario incorrecto'));
   }
 }

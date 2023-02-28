@@ -1,3 +1,5 @@
+//Página del Login
+
 import { Center, Text, Grid, Image, GridItem } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +25,7 @@ const LoginPage = () => {
   }, [change]);
 
   useEffect(() => {
-    if (statusLogin === 'error' && !showModal) setShowModal(true);
+    if (statusLogin ==='error' && !showModal) setShowModal(true);
   }, [statusLogin]);
 
   return (

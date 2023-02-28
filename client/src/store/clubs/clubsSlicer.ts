@@ -11,7 +11,7 @@ interface IClubsState {
   favorite:boolean;
   error: string;
   name_like?: string;
-  status: 'pending' | 'loading' | 'idle' | 'success'; 
+  status: 'pending' | 'error' | 'idle' | 'success'; 
 }
 
 const initialState: IClubsState = {
@@ -30,10 +30,11 @@ export const clubsSlice = createSlice({
     initClubs:(state) => {
       state.favorite=false;
       state.offset=0;
+      state.status = 'idle';
       state.clubs={results:[], total:0}
   },
     updateClubs:(state) => {
-      state.status = 'idle',
+      state.status = 'success',
       state.clubs.results = [...state.clubs.results];
   },
     clubsRequest: (state) => {
@@ -42,36 +43,39 @@ export const clubsSlice = createSlice({
     clubsSuccess: (state, action) => {
         state.clubs = action.payload;
         state.clubs.results = [...state.clubs.results];
-        state.status = 'idle'
+        state.status = 'success'
     },
     clubsError: (state, action) => {
         state.clubs = {results:[], total:0};
         state.error = action.payload;
+        state.status = 'error'
     },
     setOffset: (state, action) => {
       state.offset = action.payload;
       state.clubs.results = [...state.clubs.results];
+      state.status = 'idle'
     },
     setLimit: (state, action) => {
         state.limit = action.payload;
+        state.status = 'idle'
       },
     setFavorite: (state) => {
         state.favorite = !state.favorite;
         state.clubs.results = [...state.clubs.results];
         state.offset = 0;
+        state.status = 'idle'
       },
-      setSearch: (state, action) => {
-        state.name_like = action.payload;
-        state.clubs.results = [...state.clubs.results];
-        state.offset = 0;
-        
-      },
-
-    
+    setSearch: (state, action) => {
+      state.name_like = action.payload;
+      state.clubs.results = [...state.clubs.results];
+      state.offset = 0;
+      state.status = 'idle'        
+      },    
   },
 });
 
 export const clubs = (state: RootState) => state.reducer.clubs.clubs;
+export const status = (state: RootState) => state.reducer.clubs.status;
 export const limit = (state: RootState) => state.reducer.clubs.limit;
 export const favorite = (state: RootState) => state.reducer.clubs.favorite;
 export const offset = (state: RootState) => state.reducer.clubs.offset;
