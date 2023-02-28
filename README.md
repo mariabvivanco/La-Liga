@@ -60,6 +60,8 @@ yarn && yarn start
 ### Estructura del proyecto
 Se que esto es subjetivo y puede ser cuestionable por lo que explico los criterios en que me basé para diseñar la estructura
 
+```text
+
 |--src
     |
     |--api (Se configura la url base de la  api)
