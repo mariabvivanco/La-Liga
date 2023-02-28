@@ -24,7 +24,7 @@ const Paginator = () => {
 
   const handleChange = (value) => {
     setValue(value);
-    dispatch(setOffset(value-1));
+    dispatch(setOffset((value-1)*6));
   };
 
   const [min, setMin] = useState(clubsLiga.total > 0 ? 1 : 0);

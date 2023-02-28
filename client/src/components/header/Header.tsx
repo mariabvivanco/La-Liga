@@ -18,8 +18,7 @@ const Header = () => {
   const logoutConfirm = () => {
     dispatch(initClubs())
     dispatch(logout());
-    console.log('supuestamente lo hice')
-  }
+    }
   return (
     <Flex
       as="nav"
