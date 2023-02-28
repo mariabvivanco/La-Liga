@@ -31,11 +31,11 @@ const LoginComp: React.FC<LoginProps> = ({
   const [isErrorEmail, setIsErrorEmail] = useState(false);
   const [isErrorPassword, setIsErrorPassword] = useState(false);
 
-  const handleEmailChange = (e: any) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsErrorEmail(false);
     setEmail(e.target.value);
   };
-  const handlePasswordChange = (e: any) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsErrorPassword(false);
     setPassword(e.target.value);
   };
