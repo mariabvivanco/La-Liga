@@ -39,7 +39,7 @@ const ItemClub: React.FC<Props> = ({ club }) => {
 
   const changeFavorite = async () => {
     try {
-      const response = await updateFavorite(club.id, !fav, tokenAuth);
+      const response = await updateFavorite(club.id, !fav, tokenAuth?tokenAuth:'');
 
       if (response.id) setFav(response.favorite);
     } catch (error) {

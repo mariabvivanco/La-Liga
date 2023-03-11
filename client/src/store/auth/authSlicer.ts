@@ -3,7 +3,7 @@
 import { createSlice} from '@reduxjs/toolkit';
 import { RootState } from '..';
 export interface IAuthState {
-  token: string;
+  token: string|null;
   error: string;
   status: 'pending' | 'error' | 'not-authenticated' | 'authenticated';
   email: string;
@@ -11,7 +11,7 @@ export interface IAuthState {
 }
 
 export const initialState: IAuthState = {
-  token: '',
+  token: localStorage.getItem("token")?localStorage.getItem("token"):"",
   error: '',
   status: 'not-authenticated',
   email: '',
@@ -30,6 +30,7 @@ export const authSlice = createSlice({
     },
 
     loginSuccess: (state, action) => {
+      localStorage.setItem("token", action.payload)
       state.token = action.payload;
       state.status = 'authenticated';
     },
@@ -41,6 +42,7 @@ export const authSlice = createSlice({
       state.password= '';
     },
     logout: (state) => {
+      localStorage.setItem("token", "")
       state.status = 'not-authenticated';
       state.token = '';
       state.email= '';
