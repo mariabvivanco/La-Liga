@@ -15,10 +15,12 @@ import {
   Slider,
   SliderTrack,
   SliderFilledTrack,
+  useColorMode,
 } from '@chakra-ui/react';
 
 const Paginator = () => {
   const dispatch = useDispatch();
+  const {colorMode} = useColorMode()
   const limitClub = useSelector(limit);
   const clubsLiga = useSelector(clubs);
 
@@ -66,7 +68,7 @@ const Paginator = () => {
         onChange={handleChange}
         min={min}
         max={max}
-        colorScheme="green"
+        colorScheme='teal'
       >
         <SliderTrack min={min} max={max}>
           <SliderFilledTrack min={min} max={max} />

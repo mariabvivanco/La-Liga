@@ -29,7 +29,7 @@ const LoginPage = () => {
   }, [statusLogin]);
 
   return (
-    <Center bg="#F0F6F5" h="100vh" color="#319795">
+    <Center bg="brand.bg" h="100vh" color="brand.font">
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}>
         <GridItem>
           <Center>

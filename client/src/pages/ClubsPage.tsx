@@ -1,11 +1,11 @@
 //Página que muestra la lista de Clubs, permit acceder a un club clickeando en él
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clubsRequest } from '../store/clubs/clubsSlicer';
 import { clubs, favorite, setFavorite, status } from '../store/clubs/clubsSlicer';
 
-import { Box, Center, Grid, Text, Button, Spinner } from '@chakra-ui/react';
+import { Box, Center, Grid, Text, Button, Spinner, useColorMode } from '@chakra-ui/react';
 
 import Header from '../components/header/Header';
 import TableClub from '../components/clubs/TableClub';
@@ -17,6 +17,7 @@ const ClubsPage = () => {
   const isLoading = useSelector(status)==='pending';
   const favoriteLiga = useSelector(favorite);
   const dispatch = useDispatch();
+  const {colorMode} = useColorMode()
 
   const loadClubs = () => {
     dispatch(clubsRequest());
@@ -27,7 +28,10 @@ const ClubsPage = () => {
   }, []);
 
   return (
-    <Box bg="#F0F6F5" minHeight="100vh" color="#319795" pb="10">
+    <Box bg={colorMode==='light'?'brand.greenlight':'brand.grey'}
+         minHeight="100vh"
+         color={colorMode==='light'?'brand.green':'brand.greenlight'}
+         pb="10">
       <Header />
       {isLoading? 
         <Center mt='25%'>

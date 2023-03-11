@@ -3,7 +3,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { club } from '../store/clubdet/clubdetSlicer';
-import { Box, Center, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+import { Box, Center, SimpleGrid, Spinner, Text, useColorMode } from '@chakra-ui/react';
 import Header from '../components/header/Header';
 import { getDate } from '../hooks/utils';
 import ItemPlayer from '../components/clubdet/ItemPlayer';
@@ -11,9 +11,13 @@ import { IPlayer } from '../types/IClubs';
 
 const ClubPage = () => {
   const clubLiga = useSelector(club);
+  const {colorMode} = useColorMode()
 
   return (
-    <Box bg="#F0F6F5" minHeight="100vh" color="#319795" pb={20}>
+    <Box bg={colorMode==='light'?'brand.greenlight':'brand.grey'}
+         minHeight="100vh"
+         color={colorMode==='light'?'brand.green':'brand.greenlight'} 
+         pb={20}>
       <Header />
       {clubLiga ? (
         <div>
