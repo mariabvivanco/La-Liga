@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
-import { extendTheme, useColorMode } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
 import store from './store/index';
 import { RoutesApp } from './routes';
 
